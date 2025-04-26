@@ -4,24 +4,16 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"codex-cli/config"
 )
-
-type AppConfig struct {
-	Model                string
-	Provider             string
-	Notify               bool
-	FlexMode             bool
-	DisableResponseStorage bool
-}
 
 var (
 	configFile string
-	config     AppConfig
+	config     config.AppConfig
 )
 
 func main() {

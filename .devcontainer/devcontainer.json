@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "build": "go build -ldflags \"-s -w -X main.date=$(date +%Y-%m-%d)\" -trimpath",
+    "launch": "go run ./codex-cli/app.go -h"
+  }
+}

@@ -4,6 +4,7 @@ import (
 	"strings"
 
 	"github.com/openai/openai-go"
+	"codex-cli/config"
 )
 
 type AppConfig struct {

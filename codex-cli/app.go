@@ -5,21 +5,13 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"path/filepath"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"codex-cli/config"
 )
-
-type AppConfig struct {
-	Model                string
-	Provider             string
-	Notify               bool
-	FlexMode             bool
-	DisableResponseStorage bool
-}
 
 type AppRollout struct {
 	Session TerminalChatSession
@@ -49,7 +41,7 @@ type ResponseContent struct {
 
 var (
 	configFile string
-	config     AppConfig
+	config     config.AppConfig
 )
 
 func main() {

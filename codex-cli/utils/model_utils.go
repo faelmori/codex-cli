@@ -2,6 +2,7 @@ package utils
 
 import (
 	"strings"
+	"codex-cli/utils"
 )
 
 type ResponseItem struct {
@@ -22,7 +23,7 @@ type ResponseContent struct {
 
 func CalculateContextPercentRemaining(items []ResponseItem, model string) int {
 	maxTokens := getMaxTokensForModel(model)
-	usedTokens := ApproximateTokensUsed(items)
+	usedTokens := utils.ApproximateTokensUsed(items)
 	return int(float64(maxTokens-usedTokens) / float64(maxTokens) * 100)
 }
 

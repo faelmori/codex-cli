@@ -3,6 +3,8 @@ package main
 import (
 	"path/filepath"
 	"strings"
+	"regexp"
+	"codex-cli/utils/agent"
 )
 
 type SafetyAssessment struct {
@@ -113,8 +115,8 @@ func canAutoApproveApplyPatch(applyPatchArg, workdir string, writableRoots []str
 }
 
 func isWritePatchConstrainedToWritablePaths(applyPatchArg, workdir string, writableRoots []string) bool {
-	return allPathsConstrainedToWritablePaths(identifyFilesNeeded(applyPatchArg), workdir, writableRoots) &&
-		allPathsConstrainedToWritablePaths(identifyFilesAdded(applyPatchArg), workdir, writableRoots)
+	return allPathsConstrainedToWritablePaths(agent.IdentifyFilesNeeded(applyPatchArg), workdir, writableRoots) &&
+		allPathsConstrainedToWritablePaths(agent.IdentifyFilesAdded(applyPatchArg), workdir, writableRoots)
 }
 
 func allPathsConstrainedToWritablePaths(candidatePaths []string, workdir string, writableRoots []string) bool {
@@ -303,15 +305,5 @@ func isShellOperator(part string) bool {
 
 func parseShellCommand(command string, env map[string]string) []string {
 	// Implement shell command parsing logic here
-	return nil
-}
-
-func identifyFilesNeeded(patch string) []string {
-	// Implement logic to identify files needed by the patch
-	return nil
-}
-
-func identifyFilesAdded(patch string) []string {
-	// Implement logic to identify files added by the patch
 	return nil
 }
